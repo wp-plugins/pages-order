@@ -1,0 +1,117 @@
+Content-Transfer-Encoding: 8bit
+
+#: pages-order.php:168
+#@ pages_order
+msgid "With this plugin you may order your pages into hierarchical tree and display the tree in them."
+msgstr ""
+
+#: pages-order.php:169
+#@ pages_order
+msgid "To display the tree please add %s in your page."
+msgstr ""
+
+#: pages-order.php:178
+#@ pages_order
+msgid "In this tab, you could re-order the page hierarchy by 'drag-and-dropping' page entries."
+msgstr ""
+
+#: pages-order.php:192
+#@ pages_order
+msgid "Order Pages"
+msgstr ""
+
+#: pages-order.php:197
+#@ pages_order
+msgid "Tree displayed in pages"
+msgstr ""
+
+#: pages-order.php:198
+#@ pages_order
+msgid "Set the style of current page in tree:"
+msgstr ""
+
+#: pages-order.php:199
+#@ pages_order
+msgid "Set the style of parent pages in tree:"
+msgstr ""
+
+#: pages-order.php:200
+#@ pages_order
+msgid "Set the style of child pages in tree:"
+msgstr ""
+
+#: pages-order.php:201
+#@ pages_order
+msgid "Set the style of other pages in tree:"
+msgstr ""
+
+#: pages-order.php:203
+#@ pages_order
+msgid "Advanced options"
+msgstr ""
+
+#: pages-order.php:204
+#@ pages_order
+msgid "CSS for the tree"
+msgstr ""
+
+#: pages-order.php:206
+#@ pages_order
+msgid "Default CSS for the tree: %s"
+msgstr ""
+
+#: pages-order.php:210
+#@ pages_order
+msgid "Parameters"
+msgstr ""
+
+#: pages-order.php:218
+#@ pages_order
+msgid "Manage translations"
+msgstr ""
+
+#: pages-order.php:225
+#@ pages_order
+msgid "Give feedback"
+msgstr ""
+
+#: pages-order.php:233
+#@ pages_order
+msgid "Other plugins"
+msgstr ""
+
+#: pages-order.php:316
+#@ pages_order
+msgid "Published"
+msgstr ""
+
+#: pages-order.php:319
+#@ pages_order
+msgid "Draft"
+msgstr ""
+
+#: pages-order.php:322
+#@ pages_order
+msgid "Pending"
+msgstr ""
+
+#: pages-order.php:325
+#@ pages_order
+msgid "Future"
+msgstr ""
+
+#: pages-order.php:335
+#@ pages_order
+msgid "View"
+msgstr ""
+
+#: pages-order.php:339
+#@ pages_order
+msgid "Edit"
+msgstr ""
+
+#: pages-order.php:342
+#@ pages_order
+msgid "Trash"
+msgstr ""
+
