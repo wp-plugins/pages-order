@@ -3,7 +3,8 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.1
+Version: 1.0.2
+
 Framework: SL_Framework
 Author: SedLex
 Author Email: sedlex@sedlex.fr
@@ -58,6 +59,7 @@ class pages_order extends pluginSedLex {
 		// add_action( "the_content",  array($this,"modify_content")) ; 
 		add_action( 'wp_ajax_savePageHierarchy', array($this,"save_tree") );
 		add_shortcode( "page_tree", array($this,"page_tree") );
+		add_shortcode( "page_parents", array($this,"page_parents") );
 
 		// Important variables initialisation (Do not modify)
 		$this->path = __FILE__ ; 
@@ -120,6 +122,22 @@ class pages_order extends pluginSedLex {
 	}
 	
 	/** ====================================================================================================================================================
+	* Add a button in the TinyMCE Editor
+	*
+	* To add a new button, copy the commented lines a plurality of times (and uncomment them)
+	* 
+	* @return array of buttons
+	*/
+	
+	function add_tinymce_buttons() {
+		$buttons = array() ; 
+		$buttons[] = array(__('Display pages tree', $this->pluginID), '[page_tree]', '', WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename( __FILE__)).'img/tree_button.jpg') ; 
+		$buttons[] = array(__('Show the parent pages (breadcrumb)', $this->pluginID), '[page_parents]', '', WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename( __FILE__)).'img/parent_button.jpg') ; 
+		return $buttons ; 
+	}
+
+	
+	/** ====================================================================================================================================================
 	* Define the default option values of the plugin
 	* This function is called when the $this->get_param function do not find any value fo the given option
 	* Please note that the default return value will define the type of input form: if the default return value is a: 
@@ -138,6 +156,8 @@ class pages_order extends pluginSedLex {
 			case 'parent_style' 		: return "font-weight:bold;color:#333333;" 		; break ; 
 			case 'current_style' 		: return "font-weight:bold;color:#DD3333;" 		; break ; 
 			case 'child_style' 		: return "font-weight:normal;color:#333333;" 		; break ; 
+			case 'breadcrumb_all' 		: return "border:1px #DDDDDD solid;margin:10px;padding:10px;background-color:#EEEEEE;" 		; break ; 
+			case 'breadcrumb_item' 		: return "font-weight:normal; color:#333333;" 		; break ; 
 		}
 		return null ;
 	}
@@ -194,16 +214,15 @@ class pages_order extends pluginSedLex {
 			ob_start() ; 
 				$params = new parametersSedLex($this, "tab-parameters") ; 
 				
-				$params->add_title(__("Tree displayed in pages", $this->pluginID)) ; 
+				$params->add_title(__("Tree view style (i.e. [page_tree] shortcode)", $this->pluginID)) ; 
 				$params->add_param('current_style', __("Set the style of current page in tree:", $this->pluginID)) ; 
 				$params->add_param('parent_style', __("Set the style of parent pages in tree:", $this->pluginID)) ; 
 				$params->add_param('child_style', __("Set the style of child pages in tree:", $this->pluginID)) ; 
 				$params->add_param('other_style', __("Set the style of other pages in tree:", $this->pluginID)) ; 
-				
-				$params->add_title(__("Advanced options", $this->pluginID)) ; 
-				$params->add_param('css_tree', __("CSS for the tree", $this->pluginID)) ; 
-				$css_tree = "<br><code>xxx</code>" ; 
-				$params->add_comment(sprintf(__("Default CSS for the tree: %s", $this->pluginID),$css_tree)) ; 
+
+				$params->add_title(__("Breadcrumb style (i.e. [page_parents] shortcode)", $this->pluginID)) ; 
+				$params->add_param('breadcrumb_all', __("Set the style of the breadcrumb:", $this->pluginID)) ; 
+				$params->add_param('breadcrumb_item', __("Set the style of items of the breadcrumb:", $this->pluginID)) ; 
 				
 				$params->flush() ; 
 				
@@ -499,6 +518,38 @@ class pages_order extends pluginSedLex {
 			treeList::render($to_show, true, null, 'page_hiera');
 		$out .= ob_get_clean() ; 
 		return "<div style='margin:10px;padding:10px;'>".$out."</div>" ;
+	}
+	
+	/** ====================================================================================================================================================
+	* Call when meet the shortcode "[page_parents]" in an post/page
+	* 
+	* @return string the replacement string
+	*/	
+	
+	function page_parents($attribs) {	
+		global $post ; 
+		// We check that we are in a page and not in a post
+		if (!is_page())
+			return "" ; 
+		ob_start() ;
+		
+		
+		$parent_id = $post->post_parent ; 
+		$parents = array();
+		while ($parent_id) {
+			$page = get_page($parent_id);
+			$parents[]  = '<a href="'.get_permalink($page->ID).'" title="'.get_the_title($page->ID).'">'.get_the_title($page->ID).'</a>';
+			$parent_id  = $page->post_parent;
+		}
+	
+		// Parents are in reverse order.
+		$parents = array_reverse($parents);
+			foreach ($parents as $p) {
+				$out .= " > <span style='".$this->get_param('breadcrumb_item')."'>".$p."</span>" ; 
+			}
+
+		$out .= ob_get_clean() ; 
+		return "<div style='".$this->get_param('breadcrumb_all')."'>".$out."</div>" ;
 	}
 }
 

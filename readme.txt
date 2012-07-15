@@ -48,9 +48,20 @@ Have fun !
 
 == Screenshots ==
 
+1. The tree view in the admin dashboard
+2. The configuration page
+3. The tree view displayed in the front pages
+4. The breadcrumb displayed in the front pages
+
 == Changelog ==
+
+= 1.0.2 = 
+* Add a breadcrumb and screenshots
+
+= 1.0.1 = 
+* First release
 
 == Frequently Asked Questions ==
 
  
-InfoVersion:50bc86574cf538358eb0070195317874
+InfoVersion:d85794be47a3574744d496012a8f4e62

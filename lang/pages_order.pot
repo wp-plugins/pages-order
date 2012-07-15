@@ -1,116 +1,126 @@
 Content-Transfer-Encoding: 8bit
 
-#: pages-order.php:168
+#: pages-order.php:134
+#@ pages_order
+msgid "Display pages tree"
+msgstr ""
+
+#: pages-order.php:135
+#@ pages_order
+msgid "Show the parent pages (breadcrumb)"
+msgstr ""
+
+#: pages-order.php:188
 #@ pages_order
 msgid "With this plugin you may order your pages into hierarchical tree and display the tree in them."
 msgstr ""
 
-#: pages-order.php:169
+#: pages-order.php:189
 #@ pages_order
 msgid "To display the tree please add %s in your page."
 msgstr ""
 
-#: pages-order.php:178
+#: pages-order.php:198
 #@ pages_order
 msgid "In this tab, you could re-order the page hierarchy by 'drag-and-dropping' page entries."
 msgstr ""
 
-#: pages-order.php:192
+#: pages-order.php:212
 #@ pages_order
 msgid "Order Pages"
 msgstr ""
 
-#: pages-order.php:197
+#: pages-order.php:217
 #@ pages_order
-msgid "Tree displayed in pages"
-msgstr ""
-
-#: pages-order.php:198
-#@ pages_order
-msgid "Set the style of current page in tree:"
-msgstr ""
-
-#: pages-order.php:199
-#@ pages_order
-msgid "Set the style of parent pages in tree:"
-msgstr ""
-
-#: pages-order.php:200
-#@ pages_order
-msgid "Set the style of child pages in tree:"
-msgstr ""
-
-#: pages-order.php:201
-#@ pages_order
-msgid "Set the style of other pages in tree:"
-msgstr ""
-
-#: pages-order.php:203
-#@ pages_order
-msgid "Advanced options"
-msgstr ""
-
-#: pages-order.php:204
-#@ pages_order
-msgid "CSS for the tree"
-msgstr ""
-
-#: pages-order.php:206
-#@ pages_order
-msgid "Default CSS for the tree: %s"
-msgstr ""
-
-#: pages-order.php:210
-#@ pages_order
-msgid "Parameters"
+msgid "Tree view style (i.e. [page_tree] shortcode)"
 msgstr ""
 
 #: pages-order.php:218
 #@ pages_order
-msgid "Manage translations"
+msgid "Set the style of current page in tree:"
+msgstr ""
+
+#: pages-order.php:219
+#@ pages_order
+msgid "Set the style of parent pages in tree:"
+msgstr ""
+
+#: pages-order.php:220
+#@ pages_order
+msgid "Set the style of child pages in tree:"
+msgstr ""
+
+#: pages-order.php:221
+#@ pages_order
+msgid "Set the style of other pages in tree:"
+msgstr ""
+
+#: pages-order.php:223
+#@ pages_order
+msgid "Breadcrumb style (i.e. [page_parents] shortcode)"
+msgstr ""
+
+#: pages-order.php:224
+#@ pages_order
+msgid "Set the style of the breadcrumb:"
 msgstr ""
 
 #: pages-order.php:225
 #@ pages_order
+msgid "Set the style of items of the breadcrumb:"
+msgstr ""
+
+#: pages-order.php:229
+#@ pages_order
+msgid "Parameters"
+msgstr ""
+
+#: pages-order.php:237
+#@ pages_order
+msgid "Manage translations"
+msgstr ""
+
+#: pages-order.php:244
+#@ pages_order
 msgid "Give feedback"
 msgstr ""
 
-#: pages-order.php:233
+#: pages-order.php:252
 #@ pages_order
 msgid "Other plugins"
 msgstr ""
 
-#: pages-order.php:316
+#: pages-order.php:335
 #@ pages_order
 msgid "Published"
 msgstr ""
 
-#: pages-order.php:319
+#: pages-order.php:338
 #@ pages_order
 msgid "Draft"
 msgstr ""
 
-#: pages-order.php:322
+#: pages-order.php:341
 #@ pages_order
 msgid "Pending"
 msgstr ""
 
-#: pages-order.php:325
+#: pages-order.php:344
 #@ pages_order
 msgid "Future"
 msgstr ""
 
-#: pages-order.php:335
+#: pages-order.php:354
 #@ pages_order
 msgid "View"
 msgstr ""
 
-#: pages-order.php:339
+#: pages-order.php:358
 #@ pages_order
 msgid "Edit"
 msgstr ""
 
-#: pages-order.php:342
+#: pages-order.php:361
 #@ pages_order
 msgid "Trash"
 msgstr ""
