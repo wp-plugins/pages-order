@@ -64,4 +64,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:954c9fcf12730dffa8337d552424dbcf
+InfoVersion:bf6062a77ccc1e68d603dba27b59a13a
