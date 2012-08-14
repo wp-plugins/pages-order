@@ -3,7 +3,7 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.2
+Version: 1.0.3
 
 Framework: SL_Framework
 Author: SedLex
@@ -270,7 +270,8 @@ class pages_order extends pluginSedLex {
 	*/
 
 	function create_hierarchy_pages($array, $id_to_show=0, $display=true) {
-			
+		global $post ; 
+		
 		$result = array() ; 
 		
 		foreach ( $array as $a ) {
@@ -278,13 +279,30 @@ class pages_order extends pluginSedLex {
 				$text = $this->get_text($a) ; 
 			} else {
 				if ($a->ID == $id_to_show) {
-					$text = $this->get_text($a, $this->get_param('current_style')) ; 
+					if (!is_page()) {
+						$text = $this->get_text($a, $this->get_param('current_style')) ; 
+					} else {
+						$text = $this->get_text_standard($a, $this->get_param('current_style')) ; 
+					}
 				} else if ($this->is_child(get_post($a->ID), $id_to_show)) {
-					$text = $this->get_text($a, $this->get_param('parent_style')) ; 
+					if (!is_page()) {
+						$text = $this->get_text($a, $this->get_param('parent_style')) ; 
+					} else {
+						$text = $this->get_text_standard($a, $this->get_param('parent_style')) ; 
+					}
 				} else if ($this->is_parent(get_post($a->ID), $id_to_show)) {
-					$text = $this->get_text($a, $this->get_param('child_style')) ; 
+					if (!is_page()) {
+						$text = $this->get_text($a, $this->get_param('child_style')) ;
+					} else {
+						$text = $this->get_text_standard($a, $this->get_param('child_style')) ;
+					}
 				} else {
-					$text = $this->get_text($a, $this->get_param('other_style')) ; 
+					
+					if (!is_page()) {
+						$text = $this->get_text($a, $this->get_param('other_style')) ; 
+					} else {
+						$text = $this->get_text_standard($a, $this->get_param('other_style')) ; 
+					}
 				}
 			}
 
@@ -361,6 +379,34 @@ class pages_order extends pluginSedLex {
 			$text .= ' | <a class="page_action_delete" href="'.$delete.'">'.__( 'Trash', $this->pluginID).'</a>';
 
 		$text .= ')</span>' ;
+		return $text ; 
+	}
+	
+	/** ====================================================================================================================================================
+	* Get Text for the list given a post
+	*
+	* @return string	*/
+
+	function get_text_standard($a, $style="") {
+		$text = "" ; 
+		
+		$text .= "<img src='".WP_PLUGIN_URL."/".str_replace(basename(__FILE__),"",plugin_basename( __FILE__))."core/img/default.png'/>" ; 
+		
+		$text .= '<span style="'.$style.'"><a href="'.get_permalink( $a->ID ).'" style="'.$style.'">'.$a->post_title.'</a></span>' ;
+	 
+		if ( current_user_can('edit_published_pages') ) { 
+			// Print actions
+			$text .= ' <span class="page_actions">(' ;
+			// has capabilities to edit this page?
+			if ( $edit = get_edit_post_link( $a->ID ) )
+				$text .= '<a class="page_action_editorview" href="'.$edit.'">'.__( 'Edit' , $this->pluginID).'</a>';
+			// has capabilities to delete this page?
+			if ( $delete = get_delete_post_link( $a->ID ) )
+				$text .= ' | <a class="page_action_delete" href="'.$delete.'">'.__( 'Trash', $this->pluginID).'</a>';
+
+			$text .= ')</span>' ;
+		}
+		
 		return $text ; 
 	}
 	
@@ -504,13 +550,13 @@ class pages_order extends pluginSedLex {
 			$a = get_post($this->get_root($post->ID)) ; 
 			
 			if ($a->ID == $id_to_show) {
-				$text = $this->get_text($a, $this->get_param('current_style')) ; 
+				$text = $this->get_text_standard($a, $this->get_param('current_style')) ; 
 			} else if ($this->is_child(get_post($a->ID), $id_to_show)) {
-				$text = $this->get_text($a, $this->get_param('parent_style')) ; 
+				$text = $this->get_text_standard($a, $this->get_param('parent_style')) ; 
 			} else if ($this->is_parent(get_post($a->ID), $id_to_show)) {
-				$text = $this->get_text($a, $this->get_param('child_style')) ; 
+				$text = $this->get_text_standard($a, $this->get_param('child_style')) ; 
 			} else {
-				$text = $this->get_text($a, $this->get_param('other_style')) ; 
+				$text = $this->get_text_standard($a, $this->get_param('other_style')) ; 
 			}
 
 			$to_show = array(array($text,'page_'. $post->ID, $children, true)) ; 

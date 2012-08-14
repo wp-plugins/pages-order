@@ -55,6 +55,9 @@ Have fun !
 
 == Changelog ==
 
+= 1.0.3 = 
+* The look and feel of the frontend tree is improved
+
 = 1.0.2 = 
 * Add a breadcrumb and screenshots
 
@@ -64,4 +67,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:bf6062a77ccc1e68d603dba27b59a13a
+InfoVersion:289cd516944ae42e7213a2216a6c86e8

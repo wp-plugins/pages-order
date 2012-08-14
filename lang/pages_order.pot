@@ -90,37 +90,39 @@ msgstr ""
 msgid "Other plugins"
 msgstr ""
 
-#: pages-order.php:335
+#: pages-order.php:353
 #@ pages_order
 msgid "Published"
 msgstr ""
 
-#: pages-order.php:338
+#: pages-order.php:356
 #@ pages_order
 msgid "Draft"
 msgstr ""
 
-#: pages-order.php:341
+#: pages-order.php:359
 #@ pages_order
 msgid "Pending"
 msgstr ""
 
-#: pages-order.php:344
+#: pages-order.php:362
 #@ pages_order
 msgid "Future"
 msgstr ""
 
-#: pages-order.php:354
+#: pages-order.php:372
 #@ pages_order
 msgid "View"
 msgstr ""
 
-#: pages-order.php:358
+#: pages-order.php:376
+#: pages-order.php:402
 #@ pages_order
 msgid "Edit"
 msgstr ""
 
-#: pages-order.php:361
+#: pages-order.php:379
+#: pages-order.php:405
 #@ pages_order
 msgid "Trash"
 msgstr ""
