@@ -454,7 +454,7 @@ if (!class_exists('pluginSedLex')) {
 					if (count($this->add_tinymce_buttons())>0) {
 						if ( get_user_option('rich_editing') == 'true') {
 							add_filter('mce_external_plugins', array($this, 'add_custom_button'));
-							add_filter('mce_buttons', array($this, 'register_custom_button'));
+							add_filter('mce_buttons', array($this, 'register_custom_button'), 999 );
 							add_filter('tiny_mce_version', array($this, 'my_refresh_mce'));
 						}
 					}
@@ -481,7 +481,7 @@ if (!class_exists('pluginSedLex')) {
 		function add_custom_button($plugin_array) {
 			if (is_callable( array($this, 'add_tinymce_buttons') ) ) {
 				if (count($this->add_tinymce_buttons())>0) {
-					$plugin_array["customPluginButtons_".$this->pluginID] = plugin_dir_url(__FILE__)."show?output_js_tinymce=customPluginButtons_".$this->pluginID ; 
+					$plugin_array["customPluginButtons_".$this->pluginID] = site_url()."/?output_js_tinymce=customPluginButtons_".$this->pluginID ; 
 				}
 			}
 			return $plugin_array;

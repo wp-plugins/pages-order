@@ -55,6 +55,9 @@ Have fun !
 
 == Changelog ==
 
+= 1.0.4 = 
+* Correct a bug with some installation and the button
+
 = 1.0.3 = 
 * The look and feel of the frontend tree is improved
 
@@ -67,4 +70,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:c6443e5d6309e30917df942f29f540f4
+InfoVersion:7d6008517d8a598b9d13965c8a8eb4e9
