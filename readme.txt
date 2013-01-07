@@ -6,7 +6,7 @@ Author URI: http://www.sedlex.fr/
 Plugin URI: http://wordpress.org/extend/plugins/pages-order/
 Tags: plugin,
 Requires at least: 3.0
-Tested up to: 3.4
+Tested up to: 3.5
 Stable tag: trunk
 
 With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.
@@ -24,6 +24,7 @@ This plugins is compatible with multisite installation of Wordpress.
 = Localization =
 
 * English (United States), default language
+* Spanish (Chile) translation provided by Barbara
 
 = Features of the framework =
 
@@ -55,6 +56,9 @@ Have fun !
 
 == Changelog ==
 
+= 1.0.5 = 
+* Update the core
+
 = 1.0.4 = 
 * Correct a bug with some installation and the button
 
@@ -70,4 +74,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:7d6008517d8a598b9d13965c8a8eb4e9
+InfoVersion:5c28649e765824b3b1cc931e0aac0a7f

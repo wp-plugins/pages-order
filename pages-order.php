@@ -3,7 +3,8 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.4
+Version: 1.0.5
+
 
 Framework: SL_Framework
 Author: SedLex
@@ -68,9 +69,39 @@ class pages_order extends pluginSedLex {
 		// activation and deactivation functions (Do not modify)
 		register_activation_hook(__FILE__, array($this,'install'));
 		register_deactivation_hook(__FILE__, array($this,'deactivate'));
-		register_uninstall_hook(__FILE__, array($this,'uninstall_removedata'));
+		register_uninstall_hook(__FILE__, array('pages_order','uninstall_removedata'));
 	}
-
+	
+	/** ====================================================================================================================================================
+	* In order to uninstall the plugin, few things are to be done ... 
+	* (do not modify this function)
+	* 
+	* @return void
+	*/
+	
+	public function uninstall_removedata () {
+		global $wpdb ;
+		// DELETE OPTIONS
+		delete_option('pages_order'.'_options') ;
+		if (is_multisite()) {
+			delete_site_option('pages_order'.'_options') ;
+		}
+		
+		// DELETE SQL
+		if (function_exists('is_multisite') && is_multisite()){
+			$old_blog = $wpdb->blogid;
+			$old_prefix = $wpdb->prefix ; 
+			// Get all blog ids
+			$blogids = $wpdb->get_col($wpdb->prepare("SELECT blog_id FROM ".$wpdb->blogs));
+			foreach ($blogids as $blog_id) {
+				switch_to_blog($blog_id);
+				$wpdb->query("DROP TABLE ".str_replace($old_prefix, $wpdb->prefix, $wpdb->prefix . "pluginSL_" . 'pages_order')) ; 
+			}
+			switch_to_blog($old_blog);
+		} else {
+			$wpdb->query("DROP TABLE ".$wpdb->prefix . "pluginSL_" . 'pages_order' ) ; 
+		}
+	}
 	/**====================================================================================================================================================
 	* Function called when the plugin is activated
 	* For instance, you can do stuff regarding the update of the format of the database if needed
@@ -562,7 +593,7 @@ class pages_order extends pluginSedLex {
 			$to_show = array(array($text,'page_'. $post->ID, $children, true)) ; 
 			
 			treeList::render($to_show, true, null, 'page_hiera');
-		$out .= ob_get_clean() ; 
+		$out = ob_get_clean() ; 
 		return "<div style='margin:10px;padding:10px;'>".$out."</div>" ;
 	}
 	
@@ -574,6 +605,8 @@ class pages_order extends pluginSedLex {
 	
 	function page_parents($attribs) {	
 		global $post ; 
+		$out = "" ; 
+		
 		// We check that we are in a page and not in a post
 		if (!is_page())
 			return "" ; 
