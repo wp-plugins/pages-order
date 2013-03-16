@@ -25,6 +25,7 @@ This plugins is compatible with multisite installation of Wordpress.
 
 * English (United States), default language
 * Spanish (Chile) translation provided by Barbara
+* Spanish (Spain) translation provided by Verto, Verto Producciones
 
 = Features of the framework =
 
@@ -41,7 +42,7 @@ Have fun !
 
 == Installation ==
 
-1. Upload this folder to your plugin directory (for instance '/wp-content/plugins/')
+1. Upload this folder pages-order to your plugin directory (for instance '/wp-content/plugins/')
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Navigate to the 'SL plugins' box
 4. All plugins developed with the SL core will be listed in this box
@@ -55,6 +56,9 @@ Have fun !
 4. The breadcrumb displayed in the front pages
 
 == Changelog ==
+
+= 1.0.6 = 
+* Lighten the plugin and add translations
 
 = 1.0.5 = 
 * Update the core
@@ -74,4 +78,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:5c28649e765824b3b1cc931e0aac0a7f
+InfoVersion:87a2d8cab49b74f21ce75565810ec757
