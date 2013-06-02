@@ -3,15 +3,13 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.6
-
-
+Version: 1.0.7
 Framework: SL_Framework
 Author: SedLex
 Author Email: sedlex@sedlex.fr
 Framework Email: sedlex@sedlex.fr
 Author URI: http://www.sedlex.fr/
-Plugin URI: http://wordpress.org/extend/plugins/pages-order/
+Plugin URI: http://wordpress.org/plugins/pages-order/
 License: GPL3
 */
 
