@@ -3,7 +3,8 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.7
+Version: 1.0.8
+
 Framework: SL_Framework
 Author: SedLex
 Author Email: sedlex@sedlex.fr
@@ -160,8 +161,8 @@ class pages_order extends pluginSedLex {
 	
 	function add_tinymce_buttons() {
 		$buttons = array() ; 
-		$buttons[] = array(__('Display pages tree', $this->pluginID), '[page_tree]', '', WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename( __FILE__)).'img/tree_button.jpg') ; 
-		$buttons[] = array(__('Show the parent pages (breadcrumb)', $this->pluginID), '[page_parents]', '', WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename( __FILE__)).'img/parent_button.jpg') ; 
+		$buttons[] = array(__('Display pages tree', $this->pluginID), '[page_tree]', '', plugin_dir_url("/").'/'.str_replace(basename( __FILE__),"",plugin_basename( __FILE__)).'img/tree_button.jpg') ; 
+		$buttons[] = array(__('Show the parent pages (breadcrumb)', $this->pluginID), '[page_parents]', '', plugin_dir_url("/").'/'.str_replace(basename( __FILE__),"",plugin_basename( __FILE__)).'img/parent_button.jpg') ; 
 		return $buttons ; 
 	}
 
@@ -255,7 +256,7 @@ class pages_order extends pluginSedLex {
 				
 				$params->flush() ; 
 				
-			$tabs->add_tab(__('Parameters',  $this->pluginID), ob_get_clean() , WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_param.png") ; 	
+			$tabs->add_tab(__('Parameters',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_param.png") ; 	
 			
 			$frmk = new coreSLframework() ;  
 			if (((is_multisite())&&($blog_id == 1))||(!is_multisite())||($frmk->get_param('global_allow_translation_by_blogs'))) {
@@ -263,14 +264,14 @@ class pages_order extends pluginSedLex {
 					$plugin = str_replace("/","",str_replace(basename(__FILE__),"",plugin_basename( __FILE__))) ; 
 					$trans = new translationSL($this->pluginID, $plugin) ; 
 					$trans->enable_translation() ; 
-				$tabs->add_tab(__('Manage translations',  $this->pluginID), ob_get_clean() , WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_trad.png") ; 	
+				$tabs->add_tab(__('Manage translations',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_trad.png") ; 	
 			}
 
 			ob_start() ; 
 				$plugin = str_replace("/","",str_replace(basename(__FILE__),"",plugin_basename( __FILE__))) ; 
 				$trans = new feedbackSL($plugin, $this->pluginID) ; 
 				$trans->enable_feedback() ; 
-			$tabs->add_tab(__('Give feedback',  $this->pluginID), ob_get_clean() , WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_mail.png") ; 	
+			$tabs->add_tab(__('Give feedback',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_mail.png") ; 	
 			
 			ob_start() ; 
 				// A liste of plugin slug to be excluded
@@ -278,7 +279,7 @@ class pages_order extends pluginSedLex {
 				// Replace sedLex by your own author name
 				$trans = new otherPlugins("sedLex", $exlude) ; 
 				$trans->list_plugins() ; 
-			$tabs->add_tab(__('Other plugins',  $this->pluginID), ob_get_clean() , WP_PLUGIN_URL.'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_plug.png") ; 	
+			$tabs->add_tab(__('Other plugins',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_plug.png") ; 	
 			
 			echo $tabs->flush() ; 
 			
@@ -392,7 +393,7 @@ class pages_order extends pluginSedLex {
 			}
 		}
 		
-		$text .= "<img src='".WP_PLUGIN_URL."/".str_replace(basename(__FILE__),"",plugin_basename( __FILE__))."core/img/default.png'/>" ; 
+		$text .= "" ; 
 		
 		$text .= '<span style="'.$style.'">'.$a->post_title.'</span>' ;
 	 
@@ -418,9 +419,7 @@ class pages_order extends pluginSedLex {
 
 	function get_text_standard($a, $style="") {
 		$text = "" ; 
-		
-		$text .= "<img src='".WP_PLUGIN_URL."/".str_replace(basename(__FILE__),"",plugin_basename( __FILE__))."core/img/default.png'/>" ; 
-		
+				
 		$text .= '<span style="'.$style.'"><a href="'.get_permalink( $a->ID ).'" style="'.$style.'">'.$a->post_title.'</a></span>' ;
 	 
 		if ( current_user_can('edit_published_pages') ) { 
