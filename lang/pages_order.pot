@@ -116,13 +116,13 @@ msgid "View"
 msgstr ""
 
 #: pages-order.php:406
-#: pages-order.php:432
+#: pages-order.php:430
 #@ pages_order
 msgid "Edit"
 msgstr ""
 
 #: pages-order.php:409
-#: pages-order.php:435
+#: pages-order.php:433
 #@ pages_order
 msgid "Trash"
 msgstr ""
