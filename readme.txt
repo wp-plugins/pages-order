@@ -57,6 +57,9 @@ Have fun !
 
 == Changelog ==
 
+= 1.0.9 = 
+* Improve the appearence of the plugin
+
 = 1.0.7 = 
 * Modification of the page plugin on wordpress
 
@@ -308,4 +311,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:b40a71973fe8ec950af583436de56eaa
+InfoVersion:dea6fcf917670a1f5798a080fba20298

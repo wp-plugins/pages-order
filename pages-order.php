@@ -3,7 +3,8 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.8
+Version: 1.0.9
+
 
 Framework: SL_Framework
 Author: SedLex
@@ -206,11 +207,13 @@ class pages_order extends pluginSedLex {
 		SL_Debug::log(get_class(), "Print the configuration page." , 4) ; 
 
 		?>
-		<div class="wrap">
-			<div id="icon-themes" class="icon32"><br></div>
+		<div class="plugin-titleSL">
 			<h2><?php echo $this->pluginName ?></h2>
 		</div>
-		<div style="padding:20px;">			
+		
+		<div class="plugin-contentSL">		
+			<?php echo $this->signature ; ?>
+
 			<?php
 			//===============================================================================================
 			// After this comment, you may modify whatever you want
