@@ -57,6 +57,9 @@ Have fun !
 
 == Changelog ==
 
+= 1.0.10 = 
+* Stop using get_page which is deprecated
+
 = 1.0.9 = 
 * Improve the appearence of the plugin
 
@@ -311,4 +314,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:dea6fcf917670a1f5798a080fba20298
+InfoVersion:72bdd63a841cfc206281dd9afbd769db

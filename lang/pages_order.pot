@@ -1,128 +1,128 @@
 Content-Transfer-Encoding: 8bit
 
-#: pages-order.php:164
+#: pages-order.php:165
 #@ pages_order
 msgid "Display pages tree"
 msgstr ""
 
-#: pages-order.php:165
+#: pages-order.php:166
 #@ pages_order
 msgid "Show the parent pages (breadcrumb)"
 msgstr ""
 
-#: pages-order.php:218
+#: pages-order.php:221
 #@ pages_order
 msgid "With this plugin you may order your pages into hierarchical tree and display the tree in them."
 msgstr ""
 
-#: pages-order.php:219
+#: pages-order.php:222
 #@ pages_order
 msgid "To display the tree please add %s in your page."
 msgstr ""
 
-#: pages-order.php:228
+#: pages-order.php:231
 #@ pages_order
 msgid "In this tab, you could re-order the page hierarchy by 'drag-and-dropping' page entries."
 msgstr ""
 
-#: pages-order.php:242
+#: pages-order.php:245
 #@ pages_order
 msgid "Order Pages"
 msgstr ""
 
-#: pages-order.php:247
+#: pages-order.php:250
 #@ pages_order
 msgid "Tree view style (i.e. [page_tree] shortcode)"
 msgstr ""
 
-#: pages-order.php:248
+#: pages-order.php:251
 #@ pages_order
 msgid "Set the style of current page in tree:"
 msgstr ""
 
-#: pages-order.php:249
+#: pages-order.php:252
 #@ pages_order
 msgid "Set the style of parent pages in tree:"
 msgstr ""
 
-#: pages-order.php:250
+#: pages-order.php:253
 #@ pages_order
 msgid "Set the style of child pages in tree:"
 msgstr ""
 
-#: pages-order.php:251
+#: pages-order.php:254
 #@ pages_order
 msgid "Set the style of other pages in tree:"
 msgstr ""
 
-#: pages-order.php:253
+#: pages-order.php:256
 #@ pages_order
 msgid "Breadcrumb style (i.e. [page_parents] shortcode)"
 msgstr ""
 
-#: pages-order.php:254
+#: pages-order.php:257
 #@ pages_order
 msgid "Set the style of the breadcrumb:"
 msgstr ""
 
-#: pages-order.php:255
+#: pages-order.php:258
 #@ pages_order
 msgid "Set the style of items of the breadcrumb:"
 msgstr ""
 
-#: pages-order.php:259
+#: pages-order.php:262
 #@ pages_order
 msgid "Parameters"
 msgstr ""
 
-#: pages-order.php:267
+#: pages-order.php:270
 #@ pages_order
 msgid "Manage translations"
 msgstr ""
 
-#: pages-order.php:274
+#: pages-order.php:277
 #@ pages_order
 msgid "Give feedback"
 msgstr ""
 
-#: pages-order.php:282
+#: pages-order.php:285
 #@ pages_order
 msgid "Other plugins"
 msgstr ""
 
-#: pages-order.php:383
+#: pages-order.php:386
 #@ pages_order
 msgid "Published"
 msgstr ""
 
-#: pages-order.php:386
+#: pages-order.php:389
 #@ pages_order
 msgid "Draft"
 msgstr ""
 
-#: pages-order.php:389
+#: pages-order.php:392
 #@ pages_order
 msgid "Pending"
 msgstr ""
 
-#: pages-order.php:392
+#: pages-order.php:395
 #@ pages_order
 msgid "Future"
 msgstr ""
 
-#: pages-order.php:402
+#: pages-order.php:405
 #@ pages_order
 msgid "View"
 msgstr ""
 
-#: pages-order.php:406
-#: pages-order.php:430
+#: pages-order.php:409
+#: pages-order.php:433
 #@ pages_order
 msgid "Edit"
 msgstr ""
 
-#: pages-order.php:409
-#: pages-order.php:433
+#: pages-order.php:412
+#: pages-order.php:436
 #@ pages_order
 msgid "Trash"
 msgstr ""

@@ -3,7 +3,8 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.9
+Version: 1.0.10
+
 
 
 Framework: SL_Framework
@@ -458,7 +459,7 @@ class pages_order extends pluginSedLex {
 		$order = 1 ; 
 		foreach ($array as $a) {
 			$id_page = str_replace('page_', '', $a[0]) ; 
-			$old_page = get_page($id_page) ; 
+			$old_page = get_post($id_page) ; 
 			if (($old_page->post_parent != $parent_id)||($old_page->menu_order!=$order)) {
   				$my_post = array();
  				$my_post['ID'] = $id_page;
@@ -616,7 +617,7 @@ class pages_order extends pluginSedLex {
 		$parent_id = $post->post_parent ; 
 		$parents = array();
 		while ($parent_id) {
-			$page = get_page($parent_id);
+			$page = get_post($parent_id);
 			$parents[]  = '<a href="'.get_permalink($page->ID).'" title="'.get_the_title($page->ID).'">'.get_the_title($page->ID).'</a>';
 			$parent_id  = $page->post_parent;
 		}
