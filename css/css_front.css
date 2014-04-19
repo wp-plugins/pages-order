@@ -1,11 +1,11 @@
 .page_hiera ul li div:hover { 
-	border: 1px dotted #ccc; 
+	border: 1px dotted #ccc !important ; 
 }
 .page_hiera ul li div { 
 	cursor: move; 
-	margin-left: 5px; 
-	max-width: 680px;
-	border: 1px solid transparent; 
+	margin-left: 5px !important ; 
+	max-width: 680px !important ;
+	border: 1px solid transparent !important ; 
 	position: relative; 
 }
 
@@ -48,11 +48,11 @@
 }
 
 .page_hiera ul li div .page_actions {
-	margin-left: 0;
-	line-height: 20px;
+	margin-left: 0 !important ;
+	line-height: 20px !important ;
 	visibility: hidden;
 	position: absolute;
-	right: 5px;
+	right: 5px !important ;
 	font-size: 11px;
 	z-index: 1;
 }
@@ -69,27 +69,26 @@
 
 ul.tree, ul.tree ul { 
 	background: url("../core/img/tree_vline.png") repeat-y; 
-	margin: 0; padding: 0; 
+	margin: 0 !important ; padding: 0 !important ; 
 } 
 
 ul.tree ul { 
-	margin-left: 10px; 
+	margin-left: 10px !important ; 
 } 
 
 ul.tree li { 
-	margin: 0; 
-	padding: 0 12px; 
-	line-height: 20px; 
+	margin: 0 !important ; 
+	padding: 0 12px !important ; 
+	line-height: 20px !important ; 
 	background: url("../core/img/tree_node.png") no-repeat; 
 } 
 
 .page_hiera ul li { 
-	list-style-type: none; 
+	list-style-type: none !important  ; 
 } 
 .page_hiera ul ul li { 
-	list-style-type: none; 
+	list-style-type: none !important ; 
 } 
-
 
 ul.tree li:last-child { 
 	background: #fff url("../core/img/tree_lastnode.png") no-repeat; 
@@ -112,13 +111,13 @@ ul.tree li.plus_folder:last-child {
 }
 
 ul.tree div.loading { 
-	padding-left:18px ; 
+	padding-left:18px !important ; 
 	background: url("../core/img/ajax-loader.gif") no-repeat left 3px; 
 }
 
 .highlight_placeholder {
-	border: 1px solid #A1A1A1 ; 
-	height:15px;
-	width:200px;
+	border: 1px solid #A1A1A1 !important ; 
+	height:15px !important ;
+	width:200px !important ;
 }
 
