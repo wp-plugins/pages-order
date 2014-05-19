@@ -6,7 +6,7 @@ Author URI: http://www.sedlex.fr/
 Plugin URI: http://wordpress.org/plugins/pages-order/
 Tags: plugin,
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: trunk
 
 With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.
@@ -26,6 +26,9 @@ This plugins is compatible with multisite installation of Wordpress.
 * English (United States), default language
 * Spanish (Chile) translation provided by Barbara
 * Spanish (Spain) translation provided by Verto, Verto Producciones
+* Italian (Switzerland) translation provided by Lamberto75
+* Italian (Italy) translation provided by Lamberto75
+* Portuguese (Brazil) translation provided by GilianedeJ.AlaminosNascimento
 
 = Features of the framework =
 
@@ -51,6 +54,10 @@ Have fun !
 4. The breadcrumb displayed in the front pages
 
 == Changelog ==
+
+= 1.1.0 = 
+* NEW: HOW TO
+* NEW: Menu entry for pages
 
 = 1.0.11 = 
 * NEW: CSS updated
@@ -85,4 +92,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:0f690d366eab57b28fb65884851fcf24
+InfoVersion:d07b12b48c87ebac9c36340c10e63c5c1cc294fb

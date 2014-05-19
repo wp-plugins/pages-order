@@ -3,7 +3,8 @@
 Plugin Name: Pages Order
 Plugin Tag: plugin, 
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
-Version: 1.0.11
+Version: 1.1.0
+
 
 
 
@@ -60,6 +61,8 @@ class pages_order extends pluginSedLex {
 		
 		// add_action( "the_content",  array($this,"modify_content")) ; 
 		add_action( 'wp_ajax_savePageHierarchy', array($this,"save_tree") );
+		add_action( 'admin_menu', array($this,"admin_menu_local") );
+		
 		add_shortcode( "page_tree", array($this,"page_tree") );
 		add_shortcode( "page_parents", array($this,"page_parents") );
 
@@ -112,7 +115,7 @@ class pages_order extends pluginSedLex {
 	*/
 	
 	public function _update() {
-		SL_Debug::log(get_class(), "Update the plugin." , 4) ; 
+		SLFramework_Debug::log(get_class(), "Update the plugin." , 4) ; 
 	}
 	
 	/**====================================================================================================================================================
@@ -190,10 +193,67 @@ class pages_order extends pluginSedLex {
 			case 'child_style' 		: return "font-weight:normal;color:#333333;" 		; break ; 
 			case 'breadcrumb_all' 		: return "border:1px #DDDDDD solid;margin:10px;padding:10px;background-color:#EEEEEE;" 		; break ; 
 			case 'breadcrumb_item' 		: return "font-weight:normal; color:#333333;" 		; break ; 
+			
+			case 'show_order_in_page_edit' : return true ; 
 		}
 		return null ;
 	}
 
+	/** ====================================================================================================================================================
+	* Add menu
+	*
+	* @return void
+	*/
+	
+	public function admin_menu_local() {
+		if ($this->get_param('show_order_in_page_edit')) {
+			add_pages_page( __('Order pages', 'SL_framework'), __('Order', 'SL_framework'), 'edit_pages', 'edit_pages-order/pages-order', array($this,'pages_order_edit'));
+		}
+	}
+	
+	/** ====================================================================================================================================================
+	* Add menu
+	*
+	* @return void
+	*/
+	
+	public function pages_order_edit() {
+			$tabs = new SLFramework_Tabs() ; 
+		
+		ob_start() ; 
+			echo "<p>".__("In this tab, you could re-order the page hierarchy by 'drag-and-dropping' page entries.", $this->pluginID)."</p>" ; 
+		
+			$args = array(
+				'sort_order' => 'ASC',
+				'sort_column' => 'menu_order,post_title',
+				'parent' => 0,
+				'child_of' => 0,
+				'offset' => 0,
+				'post_type' => 'page',
+				'post_status' => 'publish,draft,pending,future'
+			);
+			
+			SLFramework_Treelist::render($this->create_hierarchy_pages(get_pages($args)), true, 'savePageHierarchy', 'page_hiera');
+					
+		$tabs->add_tab(__('Order Pages',  $this->pluginID), ob_get_clean()) ; 	
+
+		// HOW To
+		ob_start() ;
+			echo "<p>".__('With this plugin you may order your pages into hierarchical tree and display the tree in them.', $this->pluginID)."</p>" ; 
+			echo "<p>".sprintf(__("To display the tree please add %s in your page.", $this->pluginID), "<code>[page_tree]</code>")."</p>" ; 
+		$howto1 = new SLFramework_Box (__("Purpose of that plugin", $this->pluginID), ob_get_clean()) ; 
+		ob_start() ;
+			echo "<p>".__('Just drag and drop each entry.', $this->pluginID)."</p>" ; 
+		$howto2 = new SLFramework_Box (__("How to order the page", $this->pluginID), ob_get_clean()) ; 
+		ob_start() ;
+			 echo $howto1->flush() ; 
+			 echo $howto2->flush() ; 
+		$tabs->add_tab(__('How To',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_how.png") ; 	
+
+
+		echo $tabs->flush() ; 	
+	}
+	
 	/** ====================================================================================================================================================
 	* The admin configuration page
 	* This function will be called when you select the plugin in the admin backend 
@@ -205,7 +265,7 @@ class pages_order extends pluginSedLex {
 		global $wpdb;
 		global $blog_id ; 
 		
-		SL_Debug::log(get_class(), "Print the configuration page." , 4) ; 
+		SLFramework_Debug::log(get_class(), "Print the configuration page." , 4) ; 
 
 		?>
 		<div class="plugin-titleSL">
@@ -218,15 +278,11 @@ class pages_order extends pluginSedLex {
 			<?php
 			//===============================================================================================
 			// After this comment, you may modify whatever you want
-			?>
-			<p><?php echo __("With this plugin you may order your pages into hierarchical tree and display the tree in them.", $this->pluginID) ;?></p>
-			<p><?php echo sprintf(__("To display the tree please add %s in your page.", $this->pluginID), "<code>[page_tree]</code>") ;?></p>
-			<?php
 			
 			// We check rights
 			$this->check_folder_rights( array(array(WP_CONTENT_DIR."/sedlex/test/", "rwx")) ) ;
 			
-			$tabs = new adminTabs() ; 
+			$tabs = new SLFramework_Tabs() ; 
 			
 			ob_start() ; 
 				echo "<p>".__("In this tab, you could re-order the page hierarchy by 'drag-and-dropping' page entries.", $this->pluginID)."</p>" ; 
@@ -241,12 +297,27 @@ class pages_order extends pluginSedLex {
 					'post_status' => 'publish,draft,pending,future'
 				);
 				
-				treeList::render($this->create_hierarchy_pages(get_pages($args)), true, 'savePageHierarchy', 'page_hiera');
+				SLFramework_Treelist::render($this->create_hierarchy_pages(get_pages($args)), true, 'savePageHierarchy', 'page_hiera');
 						
-			$tabs->add_tab(__('Order Pages',  $this->pluginID), ob_get_clean()) ; 	
+			$tabs->add_tab(__('Order Pages',  $this->pluginID), ob_get_clean()) ; 
+			
+			
+			// HOW To
+			ob_start() ;
+				echo "<p>".__('With this plugin you may order your pages into hierarchical tree and display the tree in them.', $this->pluginID)."</p>" ; 
+				echo "<p>".sprintf(__("To display the tree please add %s in your page.", $this->pluginID), "<code>[page_tree]</code>")."</p>" ; 
+			$howto1 = new SLFramework_Box (__("Purpose of that plugin", $this->pluginID), ob_get_clean()) ; 
+			ob_start() ;
+				echo "<p>".__('Just drag and drop each entry.', $this->pluginID)."</p>" ; 
+			$howto2 = new SLFramework_Box (__("How to order the page", $this->pluginID), ob_get_clean()) ; 
+			ob_start() ;
+				 echo $howto1->flush() ; 
+				 echo $howto2->flush() ; 
+			$tabs->add_tab(__('How To',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_how.png") ; 	
+		
 
 			ob_start() ; 
-				$params = new parametersSedLex($this, "tab-parameters") ; 
+				$params = new SLFramework_Parameters($this, "tab-parameters") ; 
 				
 				$params->add_title(__("Tree view style (i.e. [page_tree] shortcode)", $this->pluginID)) ; 
 				$params->add_param('current_style', __("Set the style of current page in tree:", $this->pluginID)) ; 
@@ -258,6 +329,9 @@ class pages_order extends pluginSedLex {
 				$params->add_param('breadcrumb_all', __("Set the style of the breadcrumb:", $this->pluginID)) ; 
 				$params->add_param('breadcrumb_item', __("Set the style of items of the breadcrumb:", $this->pluginID)) ; 
 				
+				$params->add_title(__("Order for editor", $this->pluginID)) ; 
+				$params->add_param('show_order_in_page_edit', __("Show the order page for the editors users (menu under the page menu):", $this->pluginID)) ; 
+				
 				$params->flush() ; 
 				
 			$tabs->add_tab(__('Parameters',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_param.png") ; 	
@@ -266,14 +340,14 @@ class pages_order extends pluginSedLex {
 			if (((is_multisite())&&($blog_id == 1))||(!is_multisite())||($frmk->get_param('global_allow_translation_by_blogs'))) {
 				ob_start() ; 
 					$plugin = str_replace("/","",str_replace(basename(__FILE__),"",plugin_basename( __FILE__))) ; 
-					$trans = new translationSL($this->pluginID, $plugin) ; 
+					$trans = new SLFramework_Translation($this->pluginID, $plugin) ; 
 					$trans->enable_translation() ; 
 				$tabs->add_tab(__('Manage translations',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_trad.png") ; 	
 			}
 
 			ob_start() ; 
 				$plugin = str_replace("/","",str_replace(basename(__FILE__),"",plugin_basename( __FILE__))) ; 
-				$trans = new feedbackSL($plugin, $this->pluginID) ; 
+				$trans = new SLFramework_Feedback($plugin, $this->pluginID) ; 
 				$trans->enable_feedback() ; 
 			$tabs->add_tab(__('Give feedback',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_mail.png") ; 	
 			
@@ -281,7 +355,7 @@ class pages_order extends pluginSedLex {
 				// A liste of plugin slug to be excluded
 				$exlude = array('wp-pirate-search') ; 
 				// Replace sedLex by your own author name
-				$trans = new otherPlugins("sedLex", $exlude) ; 
+				$trans = new SLFramework_OtherPlugins("sedLex", $exlude) ; 
 				$trans->list_plugins() ; 
 			$tabs->add_tab(__('Other plugins',  $this->pluginID), ob_get_clean() , plugin_dir_url("/").'/'.str_replace(basename(__FILE__),"",plugin_basename(__FILE__))."core/img/tab_plug.png") ; 	
 			
@@ -593,7 +667,7 @@ class pages_order extends pluginSedLex {
 
 			$to_show = array(array($text,'page_'. $post->ID, $children, true)) ; 
 			
-			treeList::render($to_show, true, null, 'page_hiera');
+			SLFramework_Treelist::render($to_show, true, null, 'page_hiera');
 		$out = ob_get_clean() ; 
 		return "<div style='margin:10px;padding:10px;'>".$out."</div>" ;
 	}
