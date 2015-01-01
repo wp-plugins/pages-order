@@ -6,8 +6,9 @@ Author URI: http://www.sedlex.fr/
 Plugin URI: http://wordpress.org/plugins/pages-order/
 Tags: plugin,
 Requires at least: 3.0
-Tested up to: 3.9.1
+Tested up to: 4.2
 Stable tag: trunk
+License: GPLv3
 
 With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.
 
@@ -55,6 +56,9 @@ Have fun !
 
 == Changelog ==
 
+= 1.1.1 = 
+* NEW: Add icons
+
 = 1.1.0 = 
 * NEW: HOW TO
 * NEW: Menu entry for pages
@@ -92,4 +96,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:e4a2d564e28357725ba50330f8f1dd240be2946c
+InfoVersion:26c084815734981a2ba255974029905359a12ada
