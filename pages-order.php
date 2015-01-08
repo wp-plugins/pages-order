@@ -1,13 +1,9 @@
 <?php
 /**
 Plugin Name: Pages Order
-Plugin Tag: plugin, 
+Plugin Tag: page, post, order, hierarchy, hierarchical
 Description: <p>With this plugin, you may re-order the order of the pages and the hierarchical order of the pages.</p><p>Moreover, you may add this hierarchy into your page to ease the navigation of viewers into your website</p>
 Version: 1.1.1
-
-
-
-
 Framework: SL_Framework
 Author: SedLex
 Author Email: sedlex@sedlex.fr

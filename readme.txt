@@ -4,7 +4,7 @@ Author: SedLex
 Contributors: SedLex
 Author URI: http://www.sedlex.fr/
 Plugin URI: http://wordpress.org/plugins/pages-order/
-Tags: plugin,
+Tags: page, post, order, hierarchy, hierarchical
 Requires at least: 3.0
 Tested up to: 4.2
 Stable tag: trunk
@@ -96,4 +96,4 @@ Have fun !
 == Frequently Asked Questions ==
 
  
-InfoVersion:26c084815734981a2ba255974029905359a12ada
+InfoVersion:a1e0e0942d280c02e130e5ad7e9bf1f0dc9b7014
